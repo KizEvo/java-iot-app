@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StatusFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/textBoxA1"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="50dp"
+
+        android:background="@drawable/rounded_rectangle_gray"
+        android:gravity="center"
+        android:text="A1"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/textBoxA2"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="250dp"
+
+        android:background="@drawable/rounded_rectangle_gray"
+        android:gravity="center"
+        android:text="A2"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/textBoxA3"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="50dp"
+
+        android:background="@drawable/rounded_rectangle_gray"
+        android:gravity="center"
+        android:text="A3"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/textBoxA4"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="250dp"
+
+        android:background="@drawable/rounded_rectangle_gray"
+        android:gravity="center"
+        android:text="A4"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/textBoxA5"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="50dp"
+
+        android:background="@drawable/rounded_rectangle_gray"
+        android:gravity="center"
+        android:text="A4"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/textBoxA6"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="250dp"
+
+        android:background="@drawable/rounded_rectangle_gray"
+        android:gravity="center"
+        android:text="A6"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/textBoxA7"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="350dp"
+        android:layout_marginLeft="50dp"
+
+        android:background="@drawable/rounded_rectangle_gray"
+        android:gravity="center"
+        android:text="A7"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/textBoxA8"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="350dp"
+        android:layout_marginLeft="250dp"
+
+        android:background="@drawable/rounded_rectangle_gray"
+        android:gravity="center"
+        android:text="A8"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/textBoxA9"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="450dp"
+        android:layout_marginLeft="50dp"
+
+        android:background="@drawable/rounded_rectangle_gray"
+        android:gravity="center"
+        android:text="A9"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/textBoxA10"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="450dp"
+        android:layout_marginLeft="250dp"
+
+        android:background="@drawable/rounded_rectangle_gray"
+        android:gravity="center"
+        android:text="A10"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/textBoxCommentGray"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="570dp"
+        android:layout_marginLeft="80dp"
+
+        android:background="@drawable/rounded_rectangle_gray"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/textBoxCommentRed"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="630dp"
+        android:layout_marginLeft="80dp"
+
+        android:background="@drawable/rounded_rectangle_red"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/Note"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="520dp"
+        android:layout_marginLeft="130dp"
+
+        android:text="Note"
+        android:gravity="center"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/grayLabel"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="570dp"
+        android:layout_marginLeft="185dp"
+
+        android:text="Empty Slot"
+        android:gravity="center"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/redLabel"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="630dp"
+        android:layout_marginLeft="200dp"
+
+        android:text="Reserved Slot"
+        android:gravity="center"
+        android:textSize="20sp" />
+
+</FrameLayout>
