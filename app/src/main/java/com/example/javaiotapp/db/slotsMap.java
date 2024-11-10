@@ -3,7 +3,7 @@ package com.example.javaiotapp.db;
 import java.util.HashMap;
 
 public class slotsMap {
-    private final HashMap<String, String> myMap;
+    private HashMap<String, String> myMap;
 
     public slotsMap() {
         myMap = new HashMap<String, String>();
