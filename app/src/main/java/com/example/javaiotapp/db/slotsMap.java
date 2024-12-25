@@ -1,9 +1,10 @@
 package com.example.javaiotapp.db;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class slotsMap {
-    private final HashMap<String, String> myMap;
+    private Map<String, String> myMap;
 
     public slotsMap() {
         myMap = new HashMap<String, String>();
@@ -26,7 +27,11 @@ public class slotsMap {
         myMap.put("B8", "full");
     }
 
-    public HashMap<String, String> getMap() {
+    public Map<String, String> getMap() {
         return myMap;
+    }
+
+    public void setMap(Map<String, String> map) {
+        myMap = map;
     }
 }

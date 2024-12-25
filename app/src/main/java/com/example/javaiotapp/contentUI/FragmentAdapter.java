@@ -62,4 +62,8 @@ public class FragmentAdapter extends FragmentStateAdapter {
     public HomeFragment getHomeFragment() {
         return (HomeFragment) fragmentMap.get(0);   //HomeFragment is at position 0
     }
+
+    public StatusFragment getStatusFragment() {
+        return (StatusFragment) fragmentMap.get(1);   //StatusFragment is at position 1
+    }
 }

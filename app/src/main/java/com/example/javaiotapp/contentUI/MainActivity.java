@@ -27,15 +27,29 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.function.Consumer;
+
 public class MainActivity extends AppCompatActivity {
     ViewPager2 viewPager2;
+    private boolean isCarReferenceLoaded = false;
     private boolean isInitialDataLoaded = false;
     TabLayout tabLayout;
     FragmentAdapter fragmentAdapter;
     static CarInformation carInfor = new CarInformation();
     static UserInformation userInfor = new UserInformation();
+    Map<String, String> slotsMap = new  HashMap<String, String>();
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
+    FirebaseFirestore carStatus;
     String UID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
+        carStatus = FirebaseFirestore.getInstance();
         UID = fAuth.getCurrentUser().getUid();
         Log.d("Firestore", "UID: " + UID);
 
@@ -66,6 +81,16 @@ public class MainActivity extends AppCompatActivity {
         return userInfor;
     }
 
+    private void updateCarStatus(DocumentSnapshot value) {
+        Map<String, List<String>> data = getMapWithDefault(value, "floor", createDefaultMap());;
+        for (int i = 0; i < data.get("f1").size(); i++) {
+            slotsMap.put("A" + (i + 1), data.get("f1").get(i));
+        }
+
+        for (int i = 0; i < data.get("f2").size(); i++) {
+            slotsMap.put("B" + (i + 1), data.get("f2").get(i));
+        }
+    }
     private void updateUserInfo(DocumentSnapshot snapshot) {
         userInfor.setName(getFieldWithDefault(snapshot, "name", "Unknown"));
         userInfor.setSex(getGenderWithDefault(snapshot, "gender", Gender.Male));
@@ -79,6 +104,22 @@ public class MainActivity extends AppCompatActivity {
         carInfor.setEndDate(getFieldWithDefault(snapshot, "carEndDate", ""));
         carInfor.setBrand(getFieldWithDefault(snapshot, "carBranch", "Unknown"));
         carInfor.setLicensePlate(getFieldWithDefault(snapshot, "carLicensePlate", "Unknown"));
+    }
+
+
+    private Map<String, List<String>> getMapWithDefault(DocumentSnapshot snapshot, String field ,Map<String, List<String>> defaultValue) {
+        return snapshot.contains(field) ? (Map<String, List<String>>)snapshot.get(field) : defaultValue;
+    }
+
+    private Map<String, List<String>> createDefaultMap() {
+        Map<String, List<String>> map = new HashMap<String, List<String>>();
+        List<String> emptyList = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            emptyList.add("empty");
+        }
+        map.put("f1", emptyList);
+        map.put("f2", emptyList);
+        return map;
     }
 
     private String getFieldWithDefault(DocumentSnapshot snapshot, String field, String defaultValue) {
@@ -105,6 +146,38 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupFirestoreListener() {
         DocumentReference documentReference = fStore.collection("Users").document(UID);
+
+        getCarReferenceNearestDay(carReference -> {
+                    carReference.addSnapshotListener(this, (value, error) -> {
+                        if (error != null) {
+                            Log.e("Firestore", "Listen failed", error);
+                            Toast.makeText(MainActivity.this, "Failed to load data: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if (value == null || !value.exists()) {
+                            Log.w("Firestore", "Document does not exist");
+                            navigateToRegistration();
+                            return;
+                        }
+
+                        try {
+                            updateCarStatus(value);
+                            StatusFragment statusFragment = fragmentAdapter.getStatusFragment();
+                            if (statusFragment != null) {
+                                statusFragment.updateCarStatus(slotsMap);
+                            }
+                        } catch (IllegalArgumentException e) {
+                            Log.e("Firestore", "Invalid data format", e);
+                            Toast.makeText(MainActivity.this, "Invalid data format: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            Log.e("Firestore", "Unexpected error", e);
+                            Toast.makeText(MainActivity.this, "An error occurred: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+        );
+
+
 
         documentReference.addSnapshotListener(this, (value, error) -> {
             if (error != null) {
@@ -151,6 +224,42 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void getCarReferenceNearestDay(Consumer<DocumentReference> onComplete) {
+        FirebaseFirestore carTemp = FirebaseFirestore.getInstance();
+        checkCarCollection(carTemp, 0, onComplete);
+    }
+
+    private void checkCarCollection(FirebaseFirestore db, int daysBack, Consumer<DocumentReference> onComplete) {
+        if (daysBack >= 100) {
+            onComplete.accept(db.collection("sensorDataCollectionWedOct162024")
+                    .document("collection-metadata"));
+            return;
+        }
+
+        String carCollection = getCarCollectionDay(LocalDate.now().minusDays(daysBack));
+        DocumentReference docRef = db.collection(carCollection).document("collection-metadata");
+
+        docRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful() && task.getResult().exists()) {
+                Log.d("Firestore", "checkCarCollection is: " + carCollection);
+                Toast.makeText(MainActivity.this, "Car status updated", Toast.LENGTH_SHORT).show();
+                onComplete.accept(docRef);
+            } else {
+                Log.d("Firestore", "checkCarCollection is not: " + carCollection);
+                checkCarCollection(db, daysBack + 1, onComplete);
+            }
+        });
+    }
+
+
+    private String getCarCollectionDay(LocalDate date) {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd yyyy", Locale.ENGLISH);
+        String FormatedDate = date.format(formatter).replace(" ", "");
+        return "sensorDataCollection" + FormatedDate;
+    }
+
+
     // Add this method to check if initial data is loaded
     public boolean isInitialDataLoaded() {
         return isInitialDataLoaded;
@@ -181,6 +290,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }).attach();
     }
+
+
 
 
 }

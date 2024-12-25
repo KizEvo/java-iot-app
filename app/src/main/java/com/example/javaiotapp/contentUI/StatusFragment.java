@@ -13,28 +13,88 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class StatusFragment extends Fragment {
+    slotsMap tempMap = new slotsMap();
     private boolean isExpandedB1 = false;
     private boolean isExpandedB2 = false;
-
+    TextView tv_A1, tv_A2, tv_A3, tv_A4, tv_A5, tv_A6, tv_A7, tv_A8;
+    TextView tv_B1, tv_B2, tv_B3, tv_B4, tv_B5, tv_B6, tv_B7, tv_B8;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status, container, false);
-        slotsMap tempMap = new slotsMap();
-        HashMap<String, String> myMap = tempMap.getMap();
 
-        TextView tv_A1 = view.findViewById(R.id.textBoxA1);
-        TextView tv_A2 = view.findViewById(R.id.textBoxA2);
-        TextView tv_A3 = view.findViewById(R.id.textBoxA3);
-        TextView tv_A4 = view.findViewById(R.id.textBoxA4);
-        TextView tv_A5 = view.findViewById(R.id.textBoxA5);
-        TextView tv_A6 = view.findViewById(R.id.textBoxA6);
-        TextView tv_A7 = view.findViewById(R.id.textBoxA7);
-        TextView tv_A8 = view.findViewById(R.id.textBoxA8);
+
+        tv_B1 = view.findViewById(R.id.textBoxB1);
+        tv_B2 = view.findViewById(R.id.textBoxB2);
+        tv_B3 = view.findViewById(R.id.textBoxB3);
+        tv_B4 = view.findViewById(R.id.textBoxB4);
+        tv_B5 = view.findViewById(R.id.textBoxB5);
+        tv_B6 = view.findViewById(R.id.textBoxB6);
+        tv_B7 = view.findViewById(R.id.textBoxB7);
+        tv_B8 = view.findViewById(R.id.textBoxB8);
+
+        tv_A1 = view.findViewById(R.id.textBoxA1);
+        tv_A2 = view.findViewById(R.id.textBoxA2);
+        tv_A3 = view.findViewById(R.id.textBoxA3);
+        tv_A4 = view.findViewById(R.id.textBoxA4);
+        tv_A5 = view.findViewById(R.id.textBoxA5);
+        tv_A6 = view.findViewById(R.id.textBoxA6);
+        tv_A7 = view.findViewById(R.id.textBoxA7);
+        tv_A8 = view.findViewById(R.id.textBoxA8);
+        updateCarStatusView();
+
+        Button floorB1ToggleButton = view.findViewById(R.id.floorB1ToggleButton);
+        LinearLayout floorB1 = view.findViewById(R.id.floorB1);
+
+        floorB1ToggleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isExpandedB1) {
+                    floorB1.setVisibility(View.GONE);
+                    floorB1ToggleButton.setText("▼ Floor B1 (-1F)");
+                } else {
+                    floorB1.setVisibility(View.VISIBLE);
+                    floorB1ToggleButton.setText("▲ Floor B1 (-1F)");
+                }
+                isExpandedB1 = !isExpandedB1;
+            }
+        });
+
+        Button floorB2ToggleButton = view.findViewById(R.id.floorB2ToggleButton);
+        LinearLayout floorB2 = view.findViewById(R.id.floorB2);
+
+        floorB2ToggleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isExpandedB2) {
+                    floorB2.setVisibility(View.GONE);
+                    floorB2ToggleButton.setText("▼ Floor B2 (-2F)");
+                } else {
+                    floorB2.setVisibility(View.VISIBLE);
+                    floorB2ToggleButton.setText("▲ Floor B2 (-2F)");
+                }
+                isExpandedB2 = !isExpandedB2;
+            }
+        });
+        // Inflate the layout for this fragment
+        //return inflater.inflate(R.layout.fragment_status, container, false);
+        return view;
+    }
+
+    public void updateCarStatus(Map<String, String> slotsMap) {
+        tempMap.setMap(slotsMap);
+        updateCarStatusView();
+    }
+
+
+    private void updateCarStatusView() {
+        Map<String, String> myMap = tempMap.getMap();
+
 
         if(myMap.get("A1").equals("empty")){
             tv_A1.setBackgroundResource(R.drawable.rounded_rectangle_gray);
@@ -84,14 +144,6 @@ public class StatusFragment extends Fragment {
             tv_A8.setBackgroundResource(R.drawable.rounded_rectangle_red);
         }
 
-        TextView tv_B1 = view.findViewById(R.id.textBoxB1);
-        TextView tv_B2 = view.findViewById(R.id.textBoxB2);
-        TextView tv_B3 = view.findViewById(R.id.textBoxB3);
-        TextView tv_B4 = view.findViewById(R.id.textBoxB4);
-        TextView tv_B5 = view.findViewById(R.id.textBoxB5);
-        TextView tv_B6 = view.findViewById(R.id.textBoxB6);
-        TextView tv_B7 = view.findViewById(R.id.textBoxB7);
-        TextView tv_B8 = view.findViewById(R.id.textBoxB8);
 
         if(myMap.get("B1").equals("empty")){
             tv_B1.setBackgroundResource(R.drawable.rounded_rectangle_gray);
@@ -141,41 +193,5 @@ public class StatusFragment extends Fragment {
             tv_B8.setBackgroundResource(R.drawable.rounded_rectangle_red);
         }
 
-        Button floorB1ToggleButton = view.findViewById(R.id.floorB1ToggleButton);
-        LinearLayout floorB1 = view.findViewById(R.id.floorB1);
-
-        floorB1ToggleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isExpandedB1) {
-                    floorB1.setVisibility(View.GONE);
-                    floorB1ToggleButton.setText("▼ Floor B1 (-1F)");
-                } else {
-                    floorB1.setVisibility(View.VISIBLE);
-                    floorB1ToggleButton.setText("▲ Floor B1 (-1F)");
-                }
-                isExpandedB1 = !isExpandedB1;
-            }
-        });
-
-        Button floorB2ToggleButton = view.findViewById(R.id.floorB2ToggleButton);
-        LinearLayout floorB2 = view.findViewById(R.id.floorB2);
-
-        floorB2ToggleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isExpandedB2) {
-                    floorB2.setVisibility(View.GONE);
-                    floorB2ToggleButton.setText("▼ Floor B2 (-2F)");
-                } else {
-                    floorB2.setVisibility(View.VISIBLE);
-                    floorB2ToggleButton.setText("▲ Floor B2 (-2F)");
-                }
-                isExpandedB2 = !isExpandedB2;
-            }
-        });
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_status, container, false);
-        return view;
     }
 }
