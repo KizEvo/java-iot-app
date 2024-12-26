@@ -1,4 +1,4 @@
-package com.example.javaiotapp.contentUI.user;
+package com.example.iotparkingapp.contentUI.user;
 
 public class UserInfo {
     String key;

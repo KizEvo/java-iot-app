@@ -1,4 +1,4 @@
-package com.example.javaiotapp.contentUI.user;
+package com.example.iotparkingapp.contentUI.user;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -16,9 +16,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.example.javaiotapp.R;
-import com.example.javaiotapp.contentUI.AccountFragment;
-import com.example.javaiotapp.contentUI.MainActivity;
+import com.example.iotparkingapp.R;
+import com.example.iotparkingapp.contentUI.AccountFragment;
+import com.example.iotparkingapp.contentUI.MainActivity;
 
 import java.util.Calendar;
 

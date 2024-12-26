@@ -1,6 +1,5 @@
-package com.example.javaiotapp.contentUI;
+package com.example.iotparkingapp.contentUI;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -9,29 +8,23 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.javaiotapp.R;
-import com.example.javaiotapp.contentUI.car.CarInformation;
-import com.example.javaiotapp.contentUI.user.Gender;
-import com.example.javaiotapp.contentUI.user.UserInfo;
-import com.example.javaiotapp.contentUI.user.UserInformation;
+import com.example.iotparkingapp.R;
+import com.example.iotparkingapp.contentUI.car.CarInformation;
+import com.example.iotparkingapp.contentUI.user.Gender;
+import com.example.iotparkingapp.contentUI.user.UserInformation;
 
-import com.example.javaiotapp.loginUI.register;
-import com.example.javaiotapp.loginUI.registerUserInformation;
+import com.example.iotparkingapp.loginUI.registerUserInformation;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;

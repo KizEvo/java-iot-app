@@ -1,4 +1,4 @@
-package com.example.javaiotapp.loginUI;
+package com.example.iotparkingapp.loginUI;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -9,19 +9,12 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.javaiotapp.R;
-import com.example.javaiotapp.contentUI.user.Gender;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.iotparkingapp.R;
+import com.example.iotparkingapp.contentUI.user.Gender;
 
 import java.util.Calendar;
 
@@ -36,9 +29,6 @@ public class registerUserInformation extends AppCompatActivity {
     String email, password;
 
     private DatePickerDialog datePickerDialog;
-
-
-    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

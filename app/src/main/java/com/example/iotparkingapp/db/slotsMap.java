@@ -1,4 +1,4 @@
-package com.example.javaiotapp.db;
+package com.example.iotparkingapp.db;
 
 import java.util.HashMap;
 import java.util.Map;

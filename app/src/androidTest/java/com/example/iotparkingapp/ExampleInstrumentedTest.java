@@ -1,4 +1,4 @@
-package com.example.javaiotapp;
+package com.example.iotparkingapp;
 
 import android.content.Context;
 

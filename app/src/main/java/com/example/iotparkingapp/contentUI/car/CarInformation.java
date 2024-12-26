@@ -1,4 +1,4 @@
-package com.example.javaiotapp.contentUI.car;
+package com.example.iotparkingapp.contentUI.car;
 
 import androidx.annotation.NonNull;
 

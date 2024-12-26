@@ -1,4 +1,4 @@
-package com.example.javaiotapp.loginUI;
+package com.example.iotparkingapp.loginUI;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -9,21 +9,14 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.javaiotapp.R;
-import com.example.javaiotapp.contentUI.MainActivity;
-import com.example.javaiotapp.contentUI.user.Gender;
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.example.iotparkingapp.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -126,7 +119,7 @@ public class registerCarInformation extends AppCompatActivity {
     private void chooseBranch() {
 
         String[] carBrands = {
-                "Toyota", "Honda", "Ford", "BMW", "Tesla", "Chevrolet", "Nissan", "Hyundai", "Kia",
+                "Vinfast","Toyota", "Honda", "Ford", "BMW", "Tesla", "Chevrolet", "Nissan", "Hyundai", "Kia",
                 "Volkswagen", "Subaru", "Mazda", "Mercedes-Benz", "Audi", "Lexus", "Jaguar", "Volvo",
                 "Porsche", "Ferrari", "Lamborghini", "Bugatti", "Aston Martin", "Mitsubishi", "Peugeot",
                 "Fiat", "Renault", "Suzuki", "Land Rover", "Mini", "Alfa Romeo", "Cadillac", "Dodge",

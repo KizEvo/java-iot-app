@@ -1,4 +1,4 @@
-package com.example.javaiotapp.contentUI;
+package com.example.iotparkingapp.contentUI;
 
 import android.os.Bundle;
 
@@ -23,16 +23,15 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.javaiotapp.R;
-import com.example.javaiotapp.contentUI.car.CarInformation;
-import com.example.javaiotapp.contentUI.car.CarStatusFragment;
-import com.example.javaiotapp.contentUI.user.ChangeUserInformationFragment;
-import com.example.javaiotapp.contentUI.user.Gender;
-import com.example.javaiotapp.contentUI.user.UserInfo;
-import com.example.javaiotapp.contentUI.user.UserInfoAdapter;
-import com.example.javaiotapp.contentUI.user.UserInformation;
-import com.example.javaiotapp.loginUI.Login;
-import com.example.javaiotapp.loginUI.registerCarInformation;
+import com.example.iotparkingapp.R;
+import com.example.iotparkingapp.contentUI.car.CarInformation;
+import com.example.iotparkingapp.contentUI.car.CarStatusFragment;
+import com.example.iotparkingapp.contentUI.user.ChangeUserInformationFragment;
+import com.example.iotparkingapp.contentUI.user.Gender;
+import com.example.iotparkingapp.contentUI.user.UserInfo;
+import com.example.iotparkingapp.contentUI.user.UserInfoAdapter;
+import com.example.iotparkingapp.contentUI.user.UserInformation;
+import com.example.iotparkingapp.loginUI.Login;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;

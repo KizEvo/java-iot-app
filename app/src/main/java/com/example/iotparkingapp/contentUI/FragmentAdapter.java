@@ -1,4 +1,4 @@
-package com.example.javaiotapp.contentUI;
+package com.example.iotparkingapp.contentUI;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

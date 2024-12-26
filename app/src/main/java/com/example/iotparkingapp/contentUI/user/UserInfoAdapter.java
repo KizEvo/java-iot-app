@@ -1,4 +1,4 @@
-package com.example.javaiotapp.contentUI.user;
+package com.example.iotparkingapp.contentUI.user;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.javaiotapp.R;
+import com.example.iotparkingapp.R;
 
 import java.util.List;
 

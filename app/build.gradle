@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    namespace 'com.example.javaiotapp'
+    namespace 'com.example.iotparkingapp'
     compileSdk 34
 
     defaultConfig {
 	    multiDexEnabled true
-        applicationId "com.example.javaiotapp"
+        applicationId "com.example.iotparkingapp"
         minSdk 26
         targetSdk 34
         versionCode 1

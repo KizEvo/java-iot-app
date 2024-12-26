@@ -1,6 +1,6 @@
-package com.example.javaiotapp.contentUI;
-import com.example.javaiotapp.R;
-import com.example.javaiotapp.db.slotsMap;
+package com.example.iotparkingapp.contentUI;
+import com.example.iotparkingapp.R;
+import com.example.iotparkingapp.db.slotsMap;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import java.util.HashMap;
 import java.util.Map;
 
 

@@ -1,4 +1,4 @@
-package com.example.javaiotapp.contentUI;
+package com.example.iotparkingapp.contentUI;
 
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.VideoView;
 
-import com.example.javaiotapp.R;
+import com.example.iotparkingapp.R;
 
 public class HomeFragment extends Fragment {
     private VideoView videoView;

@@ -1,4 +1,4 @@
-package com.example.javaiotapp.contentUI.car;
+package com.example.iotparkingapp.contentUI.car;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,9 +13,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.javaiotapp.R;
-import com.example.javaiotapp.contentUI.AccountFragment;
-import com.example.javaiotapp.contentUI.MainActivity;
+import com.example.iotparkingapp.R;
+import com.example.iotparkingapp.contentUI.AccountFragment;
+import com.example.iotparkingapp.contentUI.MainActivity;
 
 import java.util.Calendar;
 
