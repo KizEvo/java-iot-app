@@ -47,6 +47,12 @@
             android:name=".loginUI.registerCarInformation"
             android:exported="false" >
         </activity>
+
+        <activity
+            android:name=".loginUI.ResetPass"
+            android:exported="false" >
+        </activity>
+
     </application>
 
 </manifest>
